@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather Web App</title>
+    <!--<link rel="stylesheet" type="text/css" href="/css/style.css">-->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="img/icon.png" rel="icon" />
+  </head>
+  <body>
+
+    <section>
+      <div class="container weather-container">
+  			<div class="row weather-card">
+  				<div class="col-lg-6 col-md-6">
+            <!-- Card -->
+            <div class="card weather-card">
+
+              <!-- Card content -->
+              <div class="card-body pb-3">
+                <!-- Title -->
+                <h4 class="card-title font-weight-bold">Giyani</h4>
+                <!-- Text -->
+                <% if(weather !== null){ %>
+                  <p class="card-text" >0</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="display-1 degree" >0</p>
+                    <i class="ion-ios-sunny sunny"></i>
+                  </div>
+                  <div class="d-flex justify-content-between mb-4">
+                    <p>
+                        <p class="ion-waterdrop water">0% Precipitation</p>
+                    </p>
+                  </div>
+                  <%} else{%>
+                <p class="card-text" ><%= weather.LocalObservationDateTime %>, <%= weather.WeatherText %></p>
+                <div class="d-flex justify-content-between">
+                  <p class="display-1 degree" ><%= weather.Temperature.Metric.Value %></p>
+                  <i class="ion-ios-sunny sunny"></i>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                  <p>
+                    <% if(weather.HasPrecipitation == false){ %>
+                      <p class="ion-waterdrop water">0% Precipitation</p>
+                    <% } %>
+                  </p>
+                </div>
+                <%}%>
+            </div>
+            <!-- Card -->
+  				</div>
+  			</div>
+  		</div>
+    </section>
+    <script src="public/assets/jquery/jquery.min.js"></script>
+    <script src="public/assets/jquery/jquery-migrate.min.js"></script>
+    <script src="public/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        $('.dropdown-menu li').on('click', function() {
+          var getValue = $(this).text();
+          $('.dropdown-select').text(getValue);
+        });
+      });
+    </script>
+  </body>
+</html>
